@@ -68,7 +68,7 @@ TEMPLATES = [
         },
     },
 ]
-
+AUTH_USER_MODEL='student.Staff'
 WSGI_APPLICATION = 'miniproject.wsgi.application'
 
 
