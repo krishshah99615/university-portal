@@ -1,0 +1,9 @@
+
+from django.contrib import admin
+from django.urls import path
+from . import views
+app='student'
+urlpatterns = [
+    
+    path('student_login',view=views.student_login,name='student_login')
+]
