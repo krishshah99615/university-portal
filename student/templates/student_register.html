@@ -6,6 +6,7 @@
                 <div class="col-md-4 mx-auto">
 
                       <form action="" method="post" name="login">
+                        {% csrf_token %}
                             <div class="text-center ">
                               <img src="{% static "student_2.png" %}" style=" border-radius:20%; width:100px;height:100px;" >
 

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block body %}
-        
+
         <div class="row mt-2">
                 <div class="col-md-4 mx-auto">
 
@@ -27,7 +27,7 @@
                             <button type="submit" class="btn btn-primary">Login</button>
                          </div>
                          </form>
-                         <form class="" action="{% url 'student_register' %}" method="post">
+                         <form class="" action="{% url 'student:student_register' %}" method="post">
                            {% csrf_token %}
 
                            <div class="text-center mt-2">
