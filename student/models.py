@@ -34,10 +34,7 @@ class MyStaffManager(BaseUserManager):
 
 
 class Staff(AbstractBaseUser):
-    name=models.CharField(max_length=200)
     id=models.IntegerField(unique=True,primary_key=True)
-    year = models.IntegerField(choices=((i,x) for i,x in enumerate(year_choice) ),default=3)
-    section=models.IntegerField(choices=((i,x) for i,x in enumerate(section_choice) ),default=3)
     password=models.CharField(max_length=100)
     is_admin =models.BooleanField(default=True)
     is_staff=models.BooleanField(default=True)
@@ -54,3 +51,8 @@ class Staff(AbstractBaseUser):
         return self.is_admin
     def has_module_perms(self,app_label):
         return True
+class Student(models.Model):
+    staff=models.ForeignKey(Staff,on_delete=True)
+    stud_name=models.CharField(max_length=200)
+    section=models.IntegerField(choices=((i,x) for i,x in enumerate(section_choice)),default=0)
+    year = models.IntegerField(choices=((i,x) for i,x in enumerate(year_choice)),default=0)
