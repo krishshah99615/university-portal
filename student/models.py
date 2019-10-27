@@ -46,7 +46,7 @@ class Staff(AbstractBaseUser):
     objects=MyStaffManager()
 
     def __str__(self):
-        return self.name
+        return str(self.id)
     def has_perm(self,perm,obj=None):
         return self.is_admin
     def has_module_perms(self,app_label):
@@ -56,3 +56,5 @@ class Student(models.Model):
     stud_name=models.CharField(max_length=200)
     section=models.IntegerField(choices=((i,x) for i,x in enumerate(section_choice)),default=0)
     year = models.IntegerField(choices=((i,x) for i,x in enumerate(year_choice)),default=0)
+    def __str__(self):
+        return self.stud_name
