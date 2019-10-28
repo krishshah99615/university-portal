@@ -52,7 +52,7 @@ class Staff(AbstractBaseUser):
     def has_module_perms(self,app_label):
         return True
 class Student(models.Model):
-    staff=models.ForeignKey(Staff,on_delete=True)
+    staff=models.OneToOneField(Staff,on_delete=models.CASCADE,related_name='student_profile')
     stud_name=models.CharField(max_length=200)
     section=models.IntegerField(choices=((i,x) for i,x in enumerate(section_choice)),default=0)
     year = models.IntegerField(choices=((i,x) for i,x in enumerate(year_choice)),default=0)

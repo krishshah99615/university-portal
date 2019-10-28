@@ -4,7 +4,7 @@ department_choice=['Maths','Comp','Music']
 
 
 class Teacher(models.Model):
-    staff=models.ForeignKey(Staff,on_delete=True)
+    staff=models.OneToOneField(Staff,on_delete=models.CASCADE,related_name='teacher_profile')
     teacher_name=models.CharField(max_length=200)
     department=models.IntegerField(choices=((i,x) for i,x in enumerate(department_choice)),default=0)
     def __str__(self):
