@@ -11,14 +11,10 @@ def student_register(request):
         student_form=StudentForm(request.POST)
         staff_form=StaffForm(request.POST)
         if staff_form.is_valid() and student_form.is_valid():
-            user = staff_form.save(commit=False)
-            user.save()
-
-            user.student_profile.stud_name = student_form.cleaned_data.get('stud_name')
-            user.student_profile.section =  student_form.cleaned_data.get('section')
-            user.student_profile.year =  student_form.cleaned_data.get('year')
-
-            user.student_profile.save()
+            newstaff=staff_form.save()
+            newstudent=student_form.save(commit=False)
+            newstudent.staff=newstaff
+            newstudent.save()
 
 
 
