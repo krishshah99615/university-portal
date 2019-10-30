@@ -47,5 +47,20 @@
     </tr>
   </tbody>
 </table>
+<h2>Notice Board</h2>
+  <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Notices</th>
+
+
+    </tr>
+  </thead>
+  <tbody class="table-striped">
+{% for n in notices %}
+    <tr><td>{{n.notice}}</td></tr>
+{% endfor %}
+  </tbody>
+</table>
 </center>
 {% endblock %}

@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect,render_to_response
 from .forms import StudentForm,StaffForm
 from .models import Staff,Student,Marks,Attendence
+from teacher.models import Notice
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
@@ -29,14 +30,17 @@ def student_login(request):
 def student_info(request,id):
     s=Staff.objects.get(pk=id)
     st=Student.objects.get(staff=s)
+    listofnotice=Notice.objects.all()
+
     if Marks.objects.filter(student=st).exists() and Marks.objects.filter(student=st).exists():
         m=Marks.objects.get(student=st)
         a=Attendence.objects.get(student=st)
 
-        return render(request,'stud_info.html',{'m':m,'a':a})
+
+        return render(request,'stud_info.html',{'m':m,'a':a,'notices':listofnotice})
     else:
 
-        return render(request,'stud_info.html')
+        return render(request,'stud_info.html',{'notices':listofnotice})
 
 def student_register(request):
     student_form=StudentForm()
