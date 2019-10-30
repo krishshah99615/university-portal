@@ -29,10 +29,14 @@ def student_login(request):
 def student_info(request,id):
     s=Staff.objects.get(pk=id)
     st=Student.objects.get(staff=s)
-    m=Marks.objects.get(student=st)
-    a=Marks.objects.get(student=st)
+    if Marks.objects.filter(student=st).exists() and Marks.objects.filter(student=st).exists():
+        m=Marks.objects.get(student=st)
+        a=Marks.objects.get(student=st)
 
-    return render(request,'stud_info.html',{'m':m,'a':a})
+        return render(request,'stud_info.html',{'m':m,'a':a})
+    else:
+
+        return render(request,'stud_info.html')
 
 def student_register(request):
     student_form=StudentForm()
