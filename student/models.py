@@ -57,7 +57,7 @@ class Staff(AbstractBaseUser):
         return self.id
 
     def __str__(self):              # __unicode__ on Python 2
-        return self.id
+        return str(self.id)
 
     def has_perm(self, perm, obj=None):
         "Does the user have a specific permission?"
@@ -98,9 +98,16 @@ class Student(models.Model):
     section=models.IntegerField(choices=((i,x) for i,x in enumerate(section_choice)),default=0)
     year = models.IntegerField(choices=((i,x) for i,x in enumerate(year_choice)),default=0)
     def __str__(self):
-        return self.stud_name
+        return str(self.stud_name)
 class Marks(models.Model):
     student=models.ForeignKey(Student,on_delete=models.CASCADE,related_name='mark_profile')
+    s1=models.IntegerField()
+    s2=models.IntegerField()
+    s3=models.IntegerField()
+    s4=models.IntegerField()
+    s5=models.IntegerField()
+class Attendence(models.Model):
+    student=models.ForeignKey(Student,on_delete=models.CASCADE,related_name='attendence_profile')
     s1=models.IntegerField()
     s2=models.IntegerField()
     s3=models.IntegerField()

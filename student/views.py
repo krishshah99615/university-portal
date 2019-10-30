@@ -29,10 +29,10 @@ def student_login(request):
 def student_info(request,id):
     s=Staff.objects.get(pk=id)
     st=Student.objects.get(staff=s)
-    mark=Marks.objects.get(student=st)
-    print(str(mark))
+    m=Marks.objects.get(student=st)
+    a=Marks.objects.get(student=st)
 
-    return render(request,'stud_info.html',{'id':id})
+    return render(request,'stud_info.html',{'m':m,'a':a})
 
 def student_register(request):
     student_form=StudentForm()
