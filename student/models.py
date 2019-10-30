@@ -12,7 +12,7 @@ class MyStaffManager(BaseUserManager):
             raise ValueError("password required")
         user = self.model(
                           id=id,
-                          password=password,
+
         )
         user.set_password(password)
         user.save(using=self._db)
@@ -42,7 +42,7 @@ class Staff(AbstractBaseUser):
     is_teacher=models.BooleanField(default=False)
 
     USERNAME_FIELD = 'id'
-    REQUIRED_FIELDS=['password']
+    REQUIRED_FIELDS=[]
     objects=MyStaffManager()
 
     def __str__(self):
