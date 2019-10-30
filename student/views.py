@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,render_to_response
 from .forms import StudentForm,StaffForm
-from .models import Staff,Student
+from .models import Staff,Student,Marks
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
@@ -27,6 +27,11 @@ def student_login(request):
 
 
 def student_info(request,id):
+    s=Staff.objects.get(pk=id)
+    st=Student.objects.get(staff=s)
+    mark=Marks.objects.get(student=st)
+    print(str(mark))
+
     return render(request,'stud_info.html',{'id':id})
 
 def student_register(request):

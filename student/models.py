@@ -22,7 +22,7 @@ class MyStaffManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email,  password):
+    def create_superuser(self, id,  password):
         """
         Creates and saves a superuser with the given email, date of
         birth and password.
@@ -99,3 +99,10 @@ class Student(models.Model):
     year = models.IntegerField(choices=((i,x) for i,x in enumerate(year_choice)),default=0)
     def __str__(self):
         return self.stud_name
+class Marks(models.Model):
+    student=models.ForeignKey(Student,on_delete=models.CASCADE,related_name='mark_profile')
+    s1=models.IntegerField()
+    s2=models.IntegerField()
+    s3=models.IntegerField()
+    s4=models.IntegerField()
+    s5=models.IntegerField()

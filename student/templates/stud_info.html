@@ -1,1 +1,24 @@
-<p>Welcome, {{ user.id }}.</p>
+{% extends 'home.html' %}
+{% block body %}
+<center>
+<h2>Result</h2>
+  <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Sr no.</th>
+      <th scope="col">Subject 1</th>
+      <th scope="col">Subject 2</th>
+      <th scope="col">Subject 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>{{subject1}}</td>
+      <td>{{subject2}}</td>
+      <td>{{subject3}}</td>
+    </tr>
+  </tbody>
+</table>
+</center>
+{% endblock %}
