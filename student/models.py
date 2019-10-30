@@ -39,9 +39,10 @@ class MyStaffManager(BaseUserManager):
 class Staff(AbstractBaseUser):
     id=models.IntegerField(unique=True,primary_key=True)
     password=models.CharField(max_length=100)
+    is_teacher=models.BooleanField(default=False)
     is_admin =models.BooleanField(default=False)
     is_active=models.BooleanField(default=True)
-    is_teacher=models.BooleanField(default=False)
+
 
     objects = MyStaffManager()
 
@@ -74,11 +75,7 @@ class Staff(AbstractBaseUser):
         "Is the user a member of staff?"
         # Simplest possible answer: All admins are staff
         return self.is_admin
-    @property
-    def is_teacher(self):
-        "Is the user teacher?"
-        # Simplest possible answer: All admins are staff
-        return self.is_teacher
+
 
 
 

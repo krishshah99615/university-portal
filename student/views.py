@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,render_to_response
 from .forms import StudentForm,StaffForm
-from .models import Staff,Student,Marks
+from .models import Staff,Student,Marks,Attendence
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
@@ -31,7 +31,7 @@ def student_info(request,id):
     st=Student.objects.get(staff=s)
     if Marks.objects.filter(student=st).exists() and Marks.objects.filter(student=st).exists():
         m=Marks.objects.get(student=st)
-        a=Marks.objects.get(student=st)
+        a=Attendence.objects.get(student=st)
 
         return render(request,'stud_info.html',{'m':m,'a':a})
     else:
