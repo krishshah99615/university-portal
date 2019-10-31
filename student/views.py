@@ -31,17 +31,24 @@ def student_info(request,id):
     s=Staff.objects.get(pk=id)
     st=Student.objects.get(staff=s)
     listofnotice=Notice.objects.all()
-
-    if Marks.objects.filter(student=st).exists() or Marks.objects.filter(student=st).exists():
+    
+    if Marks.objects.filter(student=st).exists():
         m=Marks.objects.get(student=st)
-        a=Attendence.objects.get(student=st)
-
-
-
-        return render(request,'stud_info.html',{'m':m,'a':a,'notices':listofnotice})
+        if Attendence.objects.filter(student=st).exists():
+            a=Attendence.objects.get(student=st)
+        else:
+            a=none
     else:
+        m=None
+        if Attendence.objects.filter(student=st).exists():
+            a=Attendence.objects.get(student=st)
+        else:
+            a=None
 
-        return render(request,'stud_info.html',{'notices':listofnotice})
+
+
+    return render(request,'stud_info.html',{'m':m,'a':a,'notices':listofnotice})
+
 
 def student_register(request):
     student_form=StudentForm()

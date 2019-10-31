@@ -1,6 +1,7 @@
 {% extends 'home.html' %}
 {% block body %}
 <center>
+  {% if m %}
 <h2>Result</h2>
   <table class="table">
   <thead class="thead-dark">
@@ -24,6 +25,8 @@
     </tr>
   </tbody>
 </table>
+{% endif %}
+{% if a %}
 <h2>Attendence</h2>
   <table class="table">
   <thead class="thead-dark">
@@ -47,6 +50,7 @@
     </tr>
   </tbody>
 </table>
+{% endif %}
 <h2>Notice Board</h2>
   <table class="table">
   <thead class="thead-dark">
