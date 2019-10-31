@@ -31,19 +31,13 @@ def student_info(request,id):
     s=Staff.objects.get(pk=id)
     st=Student.objects.get(staff=s)
     listofnotice=Notice.objects.all()
-    
+    m=a=None
     if Marks.objects.filter(student=st).exists():
         m=Marks.objects.get(student=st)
-        if Attendence.objects.filter(student=st).exists():
-            a=Attendence.objects.get(student=st)
-        else:
-            a=none
-    else:
+        a=None
+    if Attendence.objects.filter(student=st).exists():
         m=None
-        if Attendence.objects.filter(student=st).exists():
-            a=Attendence.objects.get(student=st)
-        else:
-            a=None
+        a=Attendence.objects.get(student=st)
 
 
 
