@@ -1,6 +1,6 @@
 from django.db import models
 from student.models import Staff
-department_choice=['Maths','Comp','Music']
+department_choice=['s1','s2','s3','s4','s5']
 
 
 class Teacher(models.Model):

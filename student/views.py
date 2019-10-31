@@ -32,9 +32,10 @@ def student_info(request,id):
     st=Student.objects.get(staff=s)
     listofnotice=Notice.objects.all()
 
-    if Marks.objects.filter(student=st).exists() and Marks.objects.filter(student=st).exists():
+    if Marks.objects.filter(student=st).exists() or Marks.objects.filter(student=st).exists():
         m=Marks.objects.get(student=st)
         a=Attendence.objects.get(student=st)
+
 
 
         return render(request,'stud_info.html',{'m':m,'a':a,'notices':listofnotice})
@@ -46,6 +47,8 @@ def student_register(request):
     student_form=StudentForm()
     staff_form=StaffForm()
     if request.method=='POST':
+
+
         student_form=StudentForm(request.POST)
         staff_form=StaffForm(request.POST)
         if staff_form.is_valid() and student_form.is_valid():
@@ -53,6 +56,8 @@ def student_register(request):
             newstudent=student_form.save(commit=False)
             newstudent.staff=newstaff
             newstudent.save()
+
+
             return HttpResponseRedirect('student_login')
     else:
         staff_form = StaffForm()
