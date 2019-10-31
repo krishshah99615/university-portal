@@ -9,4 +9,5 @@ urlpatterns = [
     path('teacher_dashboard/<int:id>/',view=views.teacher_dashboard,name='teacher_dashboard'),
     path('teacher_dashboard/notice',view=views.notice,name='notice'),
     path('teacher_dashboard/attend',view=views.attend,name='attend'),
+    path('teacher_dashboard/marks',view=views.marks,name='marks'),
 ]
