@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from django.http import HttpResponseRedirect,HttpResponse
-from .models import Notice
+from .models import Notice,department_choice
 from student.models import Staff,Student,Attendence,Marks
 def notice(request):
     if request.POST:
@@ -45,7 +45,7 @@ def attend(request):
                                   s4=final4,
                                   s5=final5)
         return render(request,'teacher_dashboard.html')
-    return render(request,'attendence.html',{'list':list_of_student_id})
+    return render(request,'attendence.html',{'list':list_of_student_id,'sub':department_choice})
 
 def marks(request):
     list_of_student_id=[]
@@ -77,7 +77,7 @@ def marks(request):
                                   s4=final4,
                                   s5=final5)
         return render(request,'teacher_dashboard.html')
-    return render(request,'marks.html',{'list':list_of_student_id})
+    return render(request,'marks.html',{'list':list_of_student_id,'sub':department_choice})
 
 
 

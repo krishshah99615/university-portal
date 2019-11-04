@@ -36,11 +36,11 @@ def student_info(request,id):
     listofsub=department_choice
     m=a=None
     if Marks.objects.filter(student=st).exists():
-        m=Marks.objects.get(student=st)
+        m=Marks.objects.filter(student=st).latest('s1')
         a=None
     if Attendence.objects.filter(student=st).exists():
         m=None
-        a=Attendence.objects.get(student=st)
+        a=Attendence.objects.filter(student=st).latest('s1')
 
 
 

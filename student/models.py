@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
-section_choice=['CSE-IS','CSE-NS','CSE-CORE','IT']
-year_choice=['First Year','Second Year','Third Year','Fourth Year']
+section_choice=['CSE-NS']
+year_choice=['Third Year']
 
 
 class MyStaffManager(BaseUserManager):
