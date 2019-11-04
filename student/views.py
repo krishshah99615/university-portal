@@ -6,6 +6,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from django.http import HttpResponseRedirect,HttpResponse
+from teacher.models import department_choice
+
 # Create your views here.
 def student_login(request):
     logout(request)
@@ -31,6 +33,7 @@ def student_info(request,id):
     s=Staff.objects.get(pk=id)
     st=Student.objects.get(staff=s)
     listofnotice=Notice.objects.all()
+    listofsub=department_choice
     m=a=None
     if Marks.objects.filter(student=st).exists():
         m=Marks.objects.get(student=st)
@@ -41,7 +44,7 @@ def student_info(request,id):
 
 
 
-    return render(request,'stud_info.html',{'m':m,'a':a,'notices':listofnotice})
+    return render(request,'stud_info.html',{'m':m,'a':a,'notices':listofnotice,'sub':listofsub})
 
 
 def student_register(request):

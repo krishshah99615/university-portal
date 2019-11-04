@@ -7,11 +7,10 @@
   <thead class="thead-dark">
     <tr>
       <th scope="col">Sr no.</th>
-      <th scope="col">Subject 1</th>
-      <th scope="col">Subject 2</th>
-      <th scope="col">Subject 3</th>
-      <th scope="col">Subject 4</th>
-      <th scope="col">Subject 5</th>
+      {% for s in sub %}
+
+      <th scope="col">{{s}}</th>
+      {% endfor %}
     </tr>
   </thead>
   <tbody>
@@ -32,11 +31,10 @@
   <thead class="thead-dark">
     <tr>
       <th scope="col">Sr no.</th>
-      <th scope="col">Subject 1</th>
-      <th scope="col">Subject 2</th>
-      <th scope="col">Subject 3</th>
-      <th scope="col">Subject 4</th>
-      <th scope="col">Subject 5</th>
+      {% for s in sub %}
+
+      <th scope="col">{{s}}</th>
+      {% endfor %}
     </tr>
   </thead>
   <tbody>
